@@ -35,3 +35,23 @@ func Crack(mode, token, data string, concurrency, max int, power bool, verbose b
 		RunTestingJWT(token, words, concurrency, verbose)
 	}
 }
+
+func RunTestingJWT(token string, lists []string, concurrency int, verbose bool) {
+	wordlists := make(chan string)
+	lenWordlist := len(lists)
+	nowLine := 0
+	found := false
+	secret := ""
+	// Add go routine job
+	var wg sync.WaitGroup
+	s := spinner.New(spinner.CharSets[14], 100*time.Millisecond, spinner.WithWriter(os.Stderr))
+	mutex := &sync.Mutex{}
+	if !verbose {
+		percent := float64(nowLine / lenWordlist)
+		str := fmt.Sprintf(" Cracking.. [%d / %d][%f]", nowLine, lenWordlist, percent)
+		s.Color("red", "bold")
+		s.Prefix = " "
+		s.Suffix = str
+		s.Start()
+	}
+}
