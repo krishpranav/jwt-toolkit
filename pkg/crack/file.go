@@ -28,3 +28,8 @@ func readLinesOrLiteral(arg string) ([]string, error) {
 
 	return []string{arg}, nil
 }
+
+func isFile(path string) bool {
+	f, err := os.Stat(path)
+	return err == nil && f.Mode().IsRegular()
+}
