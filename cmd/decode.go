@@ -9,6 +9,7 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	jwtInterface "github.com/hahwul/jwt-hack/pkg/jwt"
+
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -61,4 +62,8 @@ var decodeCmd = &cobra.Command{
 			log.Error("e.g jwt-hack decode {JWT_CODE}")
 		}
 	},
+}
+
+func init() {
+	rootCmd.AddCommand(decodeCmd)
 }
