@@ -22,3 +22,7 @@ var payloadCmd = &cobra.Command{
 		}
 	},
 }
+
+func init() {
+	rootCmd.AddCommand(payloadCmd)
+}
