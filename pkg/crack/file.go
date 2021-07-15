@@ -20,3 +20,11 @@ func readLines(filename string) ([]string, error) {
 
 	return lines, sc.Err()
 }
+
+func readLinesOrLiteral(arg string) ([]string, error) {
+	if isFile(arg) {
+		return readLines(arg)
+	}
+
+	return []string{arg}, nil
+}
