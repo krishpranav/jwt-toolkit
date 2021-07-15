@@ -33,3 +33,15 @@ func isFile(path string) bool {
 	f, err := os.Stat(path)
 	return err == nil && f.Mode().IsRegular()
 }
+
+func unique(intSlice []string) []string {
+	keys := make(map[string]bool)
+	list := []string{}
+	for _, entry := range intSlice {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+	return list
+}
