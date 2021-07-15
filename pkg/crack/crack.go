@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/briandowns/spinner"
-	jwtInterface "github.com/hahwul/jwt-hack/pkg/jwt"
+	jwtInterface "github.com/krishpranav/jwt-toolkit/pkg/jwt"
 	color "github.com/logrusorgru/aurora"
 	"github.com/sirupsen/logrus"
 )

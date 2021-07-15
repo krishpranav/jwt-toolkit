@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	crack "github.com/hahwul/jwt-hack/pkg/crack"
+	crack "github.com/krishpranav/jwt-toolkit/pkg/crack"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -22,7 +22,7 @@ var crackCmd = &cobra.Command{
 			}
 		} else {
 			log.Error("Arguments Error")
-			log.Error("e.g jwt-hack crack {JWT_CODE} -w {WORDLIST}")
+			log.Error("e.g jwt-toolkit crack {JWT_CODE} -w {WORDLIST}")
 		}
 	},
 }

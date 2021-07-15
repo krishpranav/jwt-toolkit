@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	jwtInterface "github.com/hahwul/jwt-hack/pkg/jwt"
+	jwtInterface "github.com/krishpranav/jwt-toolkit/pkg/jwt"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -28,7 +28,7 @@ var encodeCmd = &cobra.Command{
 			fmt.Println(jwtInterface.JWTencode(raw, secret, algo))
 		} else {
 			log.Error("Arguments Error")
-			log.Error("e.g jwt-hack encode {JWT_CODE} --secret={YOUR_SECRET}")
+			log.Error("e.g jwt-toolkit encode {JWT_CODE} --secret={YOUR_SECRET}")
 		}
 	},
 }

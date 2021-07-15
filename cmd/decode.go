@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	jwtInterface "github.com/hahwul/jwt-hack/pkg/jwt"
+	jwtInterface "github.com/krishpranav/jwt-toolkit/pkg/jwt"
 
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -59,7 +59,7 @@ var decodeCmd = &cobra.Command{
 			var log = logrus.New()
 			log.Out = os.Stdout
 			log.Error("Arguments Error")
-			log.Error("e.g jwt-hack decode {JWT_CODE}")
+			log.Error("e.g jwt-toolkit decode {JWT_CODE}")
 		}
 	},
 }
