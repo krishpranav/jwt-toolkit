@@ -19,7 +19,6 @@ var encodeCmd = &cobra.Command{
 			mapInterface := []byte(args[0])
 			var raw map[string]interface{}
 			if err := json.Unmarshal(mapInterface, &raw); err != nil {
-				// err
 				log.Error("JSON Unmarshal Error")
 				panic(0)
 			}
@@ -32,4 +31,11 @@ var encodeCmd = &cobra.Command{
 			log.Error("e.g jwt-hack encode {JWT_CODE} --secret={YOUR_SECRET}")
 		}
 	},
+}
+
+func init() {
+	rootCmd.AddCommand(encodeCmd)
+	encodeCmd.PersistentFlags().StringVar(&secret, "secret", "", "secret key for JWT signature")
+	encodeCmd.PersistentFlags().StringVar(&algo, "algorithm", "HS256", "Algorithm of JWT\ne.g) HS/RS/ECDA - 256,384,512")
+
 }
