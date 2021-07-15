@@ -19,7 +19,22 @@ func generate(alphabet string) <-chan string {
 		if len(alphabet) == 0 {
 			return
 		}
+
+		var wg sync.WaitGroup
+		wg.Add(len(alphabet))
+
+		for i := 1; i <= len(alphabet); i++ {
+			go func(i int) {
+				Word(alphabet[:i]).Permute(c)
+
+				wg.Done()
+			}(i)
+		}
+
+		wg.Wait()
 	}()
+
+	return c
 }
 
 type Word []rune
