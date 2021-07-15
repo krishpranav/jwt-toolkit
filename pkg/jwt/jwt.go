@@ -21,3 +21,17 @@ func JWTencode(claims map[string]interface{}, secret, alg string) string {
 	}
 	return tokenString
 }
+
+func JWTdecode(tokenString string) *jwt.Token {
+	var token *jwt.Token
+	var err error
+
+	parser := new(jwt.Parser)
+	token, _, err = parser.ParseUnverified(tokenString, jwt.MapClaims{})
+
+	if err != nil {
+		fmt.Errorf("[%v] Invalid token", err)
+		return nil
+	}
+	return token
+}
