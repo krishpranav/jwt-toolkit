@@ -2,12 +2,13 @@ package crack
 
 import "sync"
 
-func GenerateBruteForcePaylods(chars string) []string {
+func GenerateBruteforcePayloads(chars string) []string {
 	var payloads []string
 	for str := range generate(chars) {
 		payloads = append(payloads, str)
 	}
 	return payloads
+
 }
 
 func generate(alphabet string) <-chan string {
@@ -50,5 +51,35 @@ func (w Word) Permute(out chan<- string) {
 	for w.next() {
 		out <- string(w)
 	}
+}
 
+func (w Word) next() bool {
+	var left, right int
+
+	left = len(w) - 2
+	for w[left] >= w[left+1] && left >= 1 {
+		left--
+	}
+
+	if left == 0 && w[left] >= w[left+1] {
+		return false
+	}
+
+	right = len(w) - 1
+	for w[left] >= w[right] {
+		right--
+	}
+
+	w[left], w[right] = w[right], w[left]
+
+	left++
+	right = len(w) - 1
+
+	for left < right {
+		w[left], w[right] = w[right], w[left]
+		left++
+		right--
+	}
+
+	return true
 }
