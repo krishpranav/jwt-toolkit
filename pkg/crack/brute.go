@@ -38,3 +38,17 @@ func generate(alphabet string) <-chan string {
 }
 
 type Word []rune
+
+func (w Word) Permute(out chan<- string) {
+	if len(w) <= 1 {
+		out <- string(w)
+		return
+	}
+
+	out <- string(w)
+
+	for w.next() {
+		out <- string(w)
+	}
+
+}
